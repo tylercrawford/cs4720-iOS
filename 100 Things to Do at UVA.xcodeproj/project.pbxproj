@@ -290,6 +290,7 @@
 				A1BDFE5A1BD585C500804854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var registeredUsernameField: UILabel!
     @IBOutlet weak var registeredPasswordField: UILabel!
+    @IBOutlet weak var ShareButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         registeredPasswordField.text = ""
         usernameTextField.text = ""
         passwordTextField.text = ""
+        ShareButton.hidden = true
+        
     }
     
 
@@ -56,12 +59,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let password = passwordTextField.text
         registeredUsernameField.text = "Username: " + username!
         registeredPasswordField.text = "Password: " + password!
+        ShareButton.hidden = false
     }
     
     @IBAction func handlePinch(recognizer : UIPinchGestureRecognizer) {
         clearRegisterFields()
     }
-    
+    @IBAction func shareButtonNew(sender: UIButton) {
+        let username = registeredUsernameField.text
+        let password = registeredPasswordField.text
+        
+        let returnstring = username! + "\n" + password!
+        
+        let activityViewController = UIActivityViewController(activityItems: [returnstring as! NSString], applicationActivities: nil)
+        
+        presentViewController(activityViewController, animated: true, completion :{})
+    }
 
 
 }
